@@ -277,7 +277,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "knock"
     },
     {
       "id": "S002",
@@ -335,7 +336,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "tick"
     },
     {
       "id": "S003",
@@ -447,7 +449,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "glitch"
     },
     {
       "id": "S005",
@@ -557,7 +560,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "glitch"
     },
     {
       "id": "S007",
@@ -683,7 +687,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "knock"
     },
     {
       "id": "S009",
@@ -733,7 +738,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "knock"
     },
     {
       "id": "S010",
@@ -1306,7 +1312,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "glitch"
     },
     {
       "id": "S020",
@@ -1419,7 +1426,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "knock"
     },
     {
       "id": "S022",
@@ -1456,7 +1464,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "ring"
     },
     {
       "id": "S023",
@@ -1723,7 +1732,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "knock"
     },
     {
       "id": "S027",
@@ -1894,7 +1904,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "buzz"
     },
     {
       "id": "S030",
@@ -1947,7 +1958,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "pattern"
     },
     {
       "id": "S031",
@@ -2057,7 +2069,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "pattern"
     },
     {
       "id": "S033",
@@ -2365,7 +2378,8 @@
         }
       ],
       "control": null,
-      "ending": null
+      "ending": null,
+      "sound": "pattern"
     },
     {
       "id": "S038",

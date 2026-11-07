@@ -26,5 +26,7 @@
   "ending-title": "FİNAL",
   "ending-text": "Bu, bu oynayışın sonu. Başka seçimler ve toplanan bilgilerle farklı sonlara ulaşabilirsin.",
   "restart-button": "Yeniden oyna",
-  "reloaded": "Hikâye yeniden yüklendi"
+  "reloaded": "Hikâye yeniden yüklendi",
+  "sound-on": "SES AÇIK",
+  "sound-off": "SES KAPALI"
 }
