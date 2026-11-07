@@ -1,0 +1,2612 @@
+{
+  "meta": {
+    "title": "YAKINDA",
+    "subtitle": "Bazı sesler uzaktan gelmez.",
+    "version": "1.0",
+    "language": "tr-TR",
+    "genre": [
+      "Bilim kurgu",
+      "Gerilim",
+      "Gizem",
+      "Etkileşimli hikâye"
+    ],
+    "setting": "Günümüz İstanbul’u; Kadıköy’de eski bir apartman dairesi ve çatı",
+    "estimated_playtime": "30-45 dakika ilk oynayış; keşif ve alternatif seçimlerle 30-60 dakika",
+    "scene_count": 43,
+    "chapters": 6,
+    "endings": [
+      "KURTULUŞ",
+      "TEMAS",
+      "KAYIP"
+    ],
+    "created_for": "Unity + tarayıcı oynanabilir önizleme"
+  },
+  "start_scene": "S001",
+  "variables": [
+    {
+      "name": "guven",
+      "label": "Deniz’in güveni",
+      "default": 0,
+      "min": -2,
+      "max": 4
+    },
+    {
+      "name": "tehlike",
+      "label": "Tehlike seviyesi",
+      "default": 0,
+      "min": 0,
+      "max": 5
+    },
+    {
+      "name": "kanıt",
+      "label": "Toplanan kanıt",
+      "default": 0,
+      "min": 0,
+      "max": 12
+    }
+  ],
+  "flag_definitions": [
+    {
+      "name": "dinleme_basladi",
+      "label": "Ses dikkatle dinlendi"
+    },
+    {
+      "name": "ses_kaydi",
+      "label": "Ses kaydı saklandı"
+    },
+    {
+      "name": "gecikme_suphesi",
+      "label": "Ses tekrarındaki gecikmeden şüphelenildi"
+    },
+    {
+      "name": "gecikme_dogrulandi",
+      "label": "41 saniyelik tekrar doğrulandı"
+    },
+    {
+      "name": "duvar_fotografi",
+      "label": "Duvar izlerinin fotoğrafı var"
+    },
+    {
+      "name": "iz_degisiyor",
+      "label": "Fotoğraftaki iz değişiyor"
+    },
+    {
+      "name": "mutfak_izi",
+      "label": "Mutfaktaki iz fark edildi"
+    },
+    {
+      "name": "mutfak_fotografi",
+      "label": "Mutfak fotoğrafı var"
+    },
+    {
+      "name": "yardim_arandi",
+      "label": "Acil yardım araması denendi"
+    },
+    {
+      "name": "yoneticiye_yazdi",
+      "label": "Apartman yöneticisine yazıldı"
+    },
+    {
+      "name": "gokyuzu_fotografi",
+      "label": "Gökyüzü fotoğrafı var"
+    },
+    {
+      "name": "gokyuzu_goruldu",
+      "label": "Gökyüzündeki ışık görüldü"
+    },
+    {
+      "name": "komsuyla_yazisti",
+      "label": "Selin ile iletişim kuruldu"
+    },
+    {
+      "name": "komsu_bilgisi",
+      "label": "Önceki kiracı hakkında bilgi edinildi"
+    },
+    {
+      "name": "elektrik_kontrolu",
+      "label": "Elektrik kutusu kontrol edildi"
+    },
+    {
+      "name": "eski_not_bulundu",
+      "label": "Rauf’un notu bulundu"
+    },
+    {
+      "name": "not_okundu",
+      "label": "Rauf’un notu okundu"
+    },
+    {
+      "name": "notu_tekrar_incele",
+      "label": "Rauf’un notuna dönüldü"
+    },
+    {
+      "name": "ritim_biliniyor",
+      "label": "2 kısa / 1 uzun / 2 kısa örüntüsü biliniyor"
+    },
+    {
+      "name": "anten_hatti_bulundu",
+      "label": "Eski anten hattı bulundu"
+    },
+    {
+      "name": "dagitim_kutusu_bulundu",
+      "label": "Anten dağıtım kutusu görüldü"
+    },
+    {
+      "name": "goruntulu_arama_istendi",
+      "label": "Görüntülü arama başlatıldı"
+    },
+    {
+      "name": "koridora_girdi",
+      "label": "Kontrol bölümünde koridora girildi"
+    },
+    {
+      "name": "servis_kapagi_goruldu",
+      "label": "Servis kapağı görüldü"
+    },
+    {
+      "name": "perde_aralandi",
+      "label": "Perde aralandı"
+    },
+    {
+      "name": "yansimada_sekil",
+      "label": "Yansımada şekil görüldü"
+    },
+    {
+      "name": "foto_sekil",
+      "label": "Şeklin fotoğrafı var"
+    },
+    {
+      "name": "ekran_goruntusu",
+      "label": "Garip önizlemenin ekran görüntüsü var"
+    },
+    {
+      "name": "kaset_bulundu",
+      "label": "Rauf’un kaseti bulundu"
+    },
+    {
+      "name": "kaset_dinlendi",
+      "label": "Rauf’un ses kaydı dinlendi"
+    },
+    {
+      "name": "eski_esya_bilgisi",
+      "label": "Eski eşyalar hakkında bilgi edinildi"
+    },
+    {
+      "name": "merdivene_cikti",
+      "label": "Merdivenlerden çatıya çıkıldı"
+    },
+    {
+      "name": "cati_kapisi_acildi",
+      "label": "Çatı kapısı açıldı"
+    },
+    {
+      "name": "catiya_cikti",
+      "label": "Çatıya çıkıldı"
+    },
+    {
+      "name": "cati_isigi",
+      "label": "Çatı ışığı yakıldı"
+    },
+    {
+      "name": "nesne_goruldu",
+      "label": "Gökyüzündeki nesne görüldü"
+    },
+    {
+      "name": "video_kaydi",
+      "label": "Gökyüzü videosu kaydedildi"
+    },
+    {
+      "name": "ikinci_arama",
+      "label": "İkinci görüntülü arama başlatıldı"
+    },
+    {
+      "name": "farkli_kareler",
+      "label": "Farklı fotoğraf kareleri karşılaştırıldı"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "S001",
+      "chapter": 1,
+      "title": "03.17",
+      "speaker": "Deniz",
+      "time": "03:17",
+      "text": "Uyuyor muydun? Özür dilerim bu saatte yazıyorum.\n\nAz önce salondan üç kez vurulmuş gibi bir ses geldi. Kalkıp baktım, salonda kimse yok. Sonra aynı ses mutfaktan geldi. Evde yalnızım ve kapıyı kilitlediğime eminim.\n\nBana bir akıl ver. Korktuğumu söylemek istemiyorum ama şu an yatağa geri dönemiyorum.\n\nEvdeki sessizlik normalde beni rahatsız etmez. Üst kattaki komşunun sandalye sesi, sokaktan gelen motorlar, kalorifer borularının tıkırtısı… Hepsini tanırım. Bu ses onların hiçbirine benzemiyor; üç vuruş çok düzenli ve her seferinde aynı uzaklıktan geliyormuş gibi.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Bir dakika sessiz kalıp sesi tekrar dinle.",
+          "next_scene": "S002",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "dinleme_basladi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Salona gitmesini söyle; kapıdan bakıp geri dönsün.",
+          "next_scene": "S003",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Önce 112’yi aramasını söyle.",
+          "next_scene": "S004",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": -1
+            }
+          ],
+          "set_flags": [
+            "yardim_arandi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S002",
+      "chapter": 1,
+      "title": "Sesin kaydı",
+      "speaker": "Deniz",
+      "time": "03:18",
+      "text": "Telefonun ses kaydını açtım. İlkinde gerçekten üç vuruş duyuluyor. Ama kaydı dinleyince son vuruşun ardından çok hafif bir tıkırtı daha var.\n\nGaribi şu: Kaydı durdurduktan sonra o tıkırtı koridorun içinden bir daha geldi. Aynı aralıklarla. Sanki kayıt odanın içinde değil de odanın kendisi kayıt yapıyormuş gibi.\n\nKaydı dinlerken telefonun mikrofon seviyesinin vuruşlarda yükseldiğini gördüm; aradaki boşlukta ise sabit bir uğultu var. Sesin kaynağı hareket etseydi seviyenin de değişmesini beklerdim. Oysa dalga biçimi neredeyse kopya gibi. Bunu sana söylemek bile kendimi bir korku filmine girmişim gibi hissettiriyor.",
+      "kind": "dialogue",
+      "image": "foto_salon.jpg",
+      "image_caption": "Sesin geldiği yöne bakan koridor fotoğrafı.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kaydı saklasın; şimdi başka bir şey yapmasın.",
+          "next_scene": "S005",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ses_kaydi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Telefonu hoparlöre alıp sesi yeniden dinlesin.",
+          "next_scene": "S005",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ses_kaydi",
+            "gecikme_suphesi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S003",
+      "chapter": 1,
+      "title": "Salonun kapısı",
+      "speaker": "Deniz",
+      "time": "03:18",
+      "text": "Kapıyı araladım. Salon boş. Televizyon kapalı, lambalar sönük. Ama sehpanın üstündeki bardak yerde, halının kenarında da ince bir toz çizgisi var. Bardağı dün gece oraya koymadığıma eminim.\n\nKoridora çıkmadım. Ses duvarın içinden gelmiş gibi. Birinin evde olduğunu düşünmektense tesisatta bir şey olduğuna inanmak daha kolay.\n\nKapının kenarındaki gölgeyi fenerle taradım. Sehpanın ayağında sürüklenme izi yok, pencere kilitli ve balkon kapısı içeriden kapanmış. Birinin eve girdiğini gösteren net bir işaret bulamıyorum. Ama salonda bir şeyin yer değiştirmiş olması, tek başına bile uykuya dönmemi engelliyor.",
+      "kind": "dialogue",
+      "image": "foto_salon.jpg",
+      "image_caption": "03.18 - salon kapısı aralığından koridora bakış.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Bardakla yerdeki izi fotoğraflasın.",
+          "next_scene": "S005",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "mutfak_izi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Kapıyı kapatıp sesin tekrar etmesini beklesin.",
+          "next_scene": "S005",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S004",
+      "chapter": 1,
+      "title": "Acil arama",
+      "speaker": "Deniz",
+      "time": "03:19",
+      "text": "112’yi aradım. Arama bağlandı gibi oldu ama karşı taraftan cevap gelmedi; yalnızca kendi nefesimi, sonra da o üç vuruşu duydum. Ses telefondan mı geldi, duvardan mı, ayırt edemedim.\n\nTelefonu kapattım. Bu, yardım istemekten vazgeçtiğim anlamına gelmiyor. Sadece şu an evin içinde ne olduğunu anlamadan adres tarif edebileceğimi sanmıyorum.\n\nAcil arama ekranında süre bir saniye ilerleyip takıldı. Telefonun sinyal çubukları doluydu; bu, basit bir kapsama alanı sorunu gibi görünmüyordu. Bir daha denemekten çekinmiyorum, ama önce sana yazıyorum çünkü aynı anda hem konuşup hem de evin içinde olan biteni gözlemleyemiyorum.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Arama kaydını silmesin ve sana geri yazsın.",
+          "next_scene": "S005",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "yardim_arandi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Apartman yöneticisine kısa bir mesaj atsın.",
+          "next_scene": "S005",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "yoneticiye_yazdi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S005",
+      "chapter": 1,
+      "title": "Kapıdaki çizgiler",
+      "speaker": "Deniz",
+      "time": "03:20",
+      "text": "Koridor ışığını açtım. Dairenin giriş kapısının yanında, boyanın üstünde birkaç uzun çizgi var. Yeni açılmış gibi; alttaki beyaz tabaka görünüyor. Çizgiler kapı koluna değil, doğrudan duvara doğru uzanıyor.\n\nBunu daha önce görmediğimi biliyorum çünkü geçen hafta aynı yeri silmiştim. Fotoğraf çekeyim mi, yoksa dokunmadan uzak mı durayım?\n\nÇizgilerin kenarları boya kalkmış gibi pürüzlü değil. Sanki duvarın üstünde ince bir tabaka çekilmiş, sonra o tabaka geriye doğru soyulmuş. Tırnağımla kontrol etmiyorum; fotoğrafta görünmeyen bir şeye dokunup daha kötü bir şey başlatmak istemiyorum.",
+      "kind": "dialogue",
+      "image": "foto_izler_duvar.jpg",
+      "image_caption": "Deniz’in gönderdiği fotoğraf: kapının yanındaki dört yeni çizgi.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Yakından fotoğraf çek; hiçbir şeye dokunmasın.",
+          "next_scene": "S006",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "duvar_fotografi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Yaklaşmasın. Önce odanın geri kalanını kontrol etsin.",
+          "next_scene": "S007",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S006",
+      "chapter": 1,
+      "title": "Fotoğraftaki işaret",
+      "speaker": "Deniz",
+      "time": "03:21",
+      "text": "Yakından çektim. Çıplak gözle çizikler düzensiz görünüyor ama fotoğrafta çizgiler, beş parmaklı bir iz gibi birleşiyor. Duvara baktığımda o şekil yok. Görüntünün ortasında koyu bir halka var; sanki fotoğrafın içinde açılmış bir delik gibi. Ekranı yakınlaştırınca halka, sanki görüntü dosyasının içinde hareket etmiş gibi bir karede var, diğerinde yok.\n\nFotoğrafı sana yolladım. Lütfen bana bunun normal bir şey olduğunu söyleme; sadece ne gördüğünü söyle.\n\nFotoğrafın ayrıntılarına bakınca koyu halkanın merkezinde dört küçük nokta seçiliyor. Bir düzeni var ama bildiğim hiçbir sembole benzemiyor. İlk ve ikinci fotoğrafın dosya saatleri arasında sadece birkaç saniye var; buna rağmen iz aynı yerde değil. Ekran bozulması olabilir, fakat dosyanın kendisi değişmiş gibi görünmesi beni rahatsız ediyor.",
+      "kind": "dialogue",
+      "image": "foto_izli_kapi.jpg",
+      "image_caption": "Yakın çekim: izler fotoğraf karesinde farklı görünüyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Fotoğrafı sakla; aynı noktayı birkaç saniye sonra yeniden çeksin.",
+          "next_scene": "S008",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "iz_degisiyor"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Çiziklere dokunmamasını ve elini yıkamasını söyle.",
+          "next_scene": "S008",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S007",
+      "chapter": 1,
+      "title": "Kapı eşiği",
+      "speaker": "Deniz",
+      "time": "03:21",
+      "text": "Girişten uzaklaştım. Şimdi dikkatlice bakınca izlerin yere kadar inmediğini fark ediyorum. Kapı eşiğinin önünde bitiyorlar; sanki bir şey duvara yaklaşmış ama kapıdan içeri girememiş.\n\nBunu düşünmek bile saçma geliyor. Birinin içeride olmadığına dair kanıtım yok, ama kapıyı kontrol etmeden açmak da istemiyorum.\n\nDürbünden baktığımda karşı duvar ve merdiven kapısı görünüyor. Koridorda kimse yok. Yine de merdiven lambası bir kez yanıp sönüyor ve o anda duvarın üstünde ince bir çizgi beliriyor. Kapıyı açmıyorum. Kendimi korkutuyor olsam bile, kilitli kapının arkasında kalmak şu an daha güvenli.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kapı dürbününden koridora baksın.",
+          "next_scene": "S008",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Salonla mutfağı kontrol etsin.",
+          "next_scene": "S008",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S008",
+      "chapter": 1,
+      "title": "Kırk bir saniye",
+      "speaker": "Deniz",
+      "time": "03:22",
+      "text": "Üç vuruşu yeniden duydum. Aralarında tam iki saniye var. Sonra telefondaki ses kaydını açınca aynı vuruşlar kaydın içinde duyuluyor; kaydı kapatmamın ardından koridordan bir kez daha geldi.\n\nBana kalırsa ses kaydı bir şeyi tetikledi. Ya da kayıt, duvarların içinde zaten olan bir sesi yakaladı. Bir sonraki adımda neyi kontrol etmem gerektiğini bilmiyorum.\n\nKronometreyi açıp tekrarın aralığını ölçtüm. İlk vuruştan sonra telefon ekranında geçen süreyi not aldım; ikinci örüntü kırk bir saniye sonra geldi. Birkaç saniyelik sapma olsaydı rastgelelik diyebilirdim. Aynı aralığın farklı seslerde tekrarlanması ise bunu daha sistemli bir şeye dönüştürüyor.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Ses kaydıyla canlı sesi karşılaştırsın.",
+          "next_scene": "S009",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gecikme_suphesi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Mutfaktan gelen sesi kontrol etsin.",
+          "next_scene": "S010",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Pencereyi açmadan dışarıyı incelesin.",
+          "next_scene": "S011",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S009",
+      "chapter": 2,
+      "title": "Aynı ses değil",
+      "speaker": "Deniz",
+      "time": "03:24",
+      "text": "Kaydı dalga biçimi olarak açtım. Üç vuruşun hemen ardından daha zayıf bir örüntü var. Canlı sesle kaydı üst üste koyunca ikinci örüntünün kayıttan yaklaşık kırk bir saniye sonra tekrarlandığını fark ettim.\n\nBu bir zaman yolculuğu değil; en azından elimdeki kanıt bunu söylemiyor. Ama bir şey sesleri kaydediyor, sonra evin içinde yeniden üretiyor olabilir. Telefonumun mikrofonunu kapattığımda da vuruşlar sürüyor.\n\nDosyanın kopyasını başka bir uygulamada açtım; aynı ses orada da var. Böylece tek bir uygulamanın görsel hatası olma ihtimali azaldı. Ama kayıt cihazının odanın içindeki sesi neden tekrar ürettiğini hâlâ bilmiyoruz. Bunun bir hoparlör, kablo ya da yakındaki bir elektronik cihazla ilişkili olup olmadığını test etmek gerekiyor.",
+      "kind": "dialogue",
+      "image": "foto_salon.jpg",
+      "image_caption": "Sesin ilk kaydedildiği oda; kayıt karşılaştırması bu görüntüyle birlikte saklanıyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Dalga biçiminin ekran görüntüsünü saklasın.",
+          "next_scene": "S012",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gecikme_dogrulandi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Elektrik panosunu kontrol etsin.",
+          "next_scene": "S012",
+          "effects": [],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S010",
+      "chapter": 2,
+      "title": "Mutfak",
+      "speaker": "Deniz",
+      "time": "03:24",
+      "text": "Mutfakta yerdeki bardağın kırılmadığını gördüm. Bardak devrilmiş, ama içindeki su tezgâhın üstüne değil, duvara doğru akmış. Duvar kuru. Su, duvarın dibinde küçük bir damla hâlinde duruyor.\n\nBunu mantıklı bir şekilde açıklayamıyorum. Dokunmadım. Sadece fotoğrafını çektim ve mutfağın ışığını kapattım.\n\nSu damlasını kâğıt havluyla almayı düşündüm, sonra vazgeçtim. Damla duvara değdiği yerde parlak bir halka bırakmış. Koku yok, renk yok, buharlaşma yok. Evdeki herhangi bir temizlik ürününden kalan iz gibi görünmüyor. Bunu fotoğraflayıp mutfaktan çıkıyorum; tek bir işarete dokunup kendimi riske atmak istemiyorum.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Fotoğrafı kaydet ve mutfaktan çık.",
+          "next_scene": "S012",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "mutfak_fotografi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Duvara bir daha bak; yakından dokunma.",
+          "next_scene": "S012",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S011",
+      "chapter": 2,
+      "title": "Penceredeki ışık",
+      "speaker": "Deniz",
+      "time": "03:25",
+      "text": "Perdeyi araladım. Kadıköy’ün ışıkları normal görünüyor. Uzakta, denizin üst tarafında mavi-beyaz bir nokta var. Uçak gibi hareket etmiyor; birkaç dakika boyunca aynı yerde kaldı.\n\nKamerayı doğrultunca ekranda ışığın altında ikinci bir halka beliriyor. Çıplak gözle bakınca yok. Telefonu indirince de kayboluyor. Sana fotoğraf göndereceğim.\n\nGökyüzündeki noktanın altında bir uçak geçiyor. Uçağın ışıkları hareket ediyor, ama nokta aynı koordinatta kalıyor. Binanın çatısına göre yerini ölçmek için pencere pervazındaki çatlağı referans aldım. Beş dakika sonra tekrar baktığımda nokta hâlâ aynı yerde; sadece çevresindeki halka genişleyip daralıyor.",
+      "kind": "dialogue",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "İstanbul üzerinde sabit kalan nokta ve kamerada görünen ikinci halka.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Pencereyi açmadan fotoğraf çeksin.",
+          "next_scene": "S013",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gokyuzu_fotografi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Pencereden uzaklaşıp ışığı izlesin.",
+          "next_scene": "S013",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [
+            "gokyuzu_goruldu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S012",
+      "chapter": 2,
+      "title": "Elektrik kesintisi değil",
+      "speaker": "Deniz",
+      "time": "03:26",
+      "text": "Evdeki lambalar bir an sönüp geri geldi. Modem yeniden başladı, ama telefonumun interneti kesilmedi. Koridordaki gece lambasıysa kapalı olmasına rağmen duvara soluk mavi bir çizgi düşürüyor.\n\nSesler yalnızca benim dairemde değilmiş gibi geliyor. Ne zaman bir şey değişse, aynı çizgi kapının kenarında beliriyor. Elektrik panosunu kontrol etmek ya da dışarıdan birine yazmak arasında kaldım.\n\nModem tekrar açıldığında tarih ve saat doğru kaldı. Elektrik kesintisi olsaydı bile duvardaki çizginin sürmesi tek başına olağanüstü bir kanıt sayılmazdı; içeride şarjlı bir cihaz veya yansıma olabilir. O yüzden tek bir belirtiye güvenmiyorum. Farklı kaynaklardan gelen işaretleri karşılaştırmamız gerekiyor.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Gökyüzünün fotoğrafını çekip kaydet.",
+          "next_scene": "S013",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gokyuzu_goruldu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Karşı dairede oturan komşu Selin’e yaz.",
+          "next_scene": "S014",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "komsuyla_yazisti"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Sigorta kutusunu kontrol et.",
+          "next_scene": "S015",
+          "effects": [],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S013",
+      "chapter": 2,
+      "title": "Fotoğrafta olmayan şey",
+      "speaker": "Deniz",
+      "time": "03:27",
+      "text": "Fotoğrafı büyütüp baktım. Işık noktasının altında ince bir çizgi var; sanki gökyüzünden binanın çatısına kadar uzanıyor. Ama çizgi sadece üç kareden birinde görünüyor.\n\nFotoğrafı sana gönderdim. Bu bir lens parlaması olabilir diye düşündüm, sonra aynı çizgiyi ikinci fotoğrafta da aynı yerde gördüm. İki görüntüde de bina aynı, ama gökyüzündeki noktanın çevresindeki ışık farklı.\n\nFotoğrafın orijinal dosyasını sakladım; uygulama üzerinden gönderilen sıkıştırılmış kopya ayrıntıları kaybettirebilir. Işık izinin çatıya kadar indiği çizginin birkaç karede görünmemesi, kameranın pozlama ayarlarıyla açıklanabilir. Fakat aynı çizginin dairenin içindeki yansımalarla aynı ritimde belirmesi, basit bir lens parlaması açıklamasını zayıflatıyor.",
+      "kind": "dialogue",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "Aynı gökyüzünün iki fotoğrafında farklı görünen ışık izi.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Fotoğrafları yan yana karşılaştırsın.",
+          "next_scene": "S016",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gokyuzu_fotografi",
+            "farkli_kareler"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Fotoğrafı saklayıp elektrik kutusuna baksın.",
+          "next_scene": "S016",
+          "effects": [],
+          "set_flags": [
+            "gokyuzu_fotografi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S014",
+      "chapter": 2,
+      "title": "Komşu Selin",
+      "speaker": "Deniz",
+      "time": "03:27",
+      "text": "Selin cevap verdi: “Sen de mi duydun?” Sonra birkaç saniye yazmadı.\n\n“Geçen hafta binanın çatısında ışık gördüm. Yöneticinin anten kutusunu kontrol ettirdiğini sanmıştım. Sakın çatıya tek başına çıkma. Önceki kiracı da geceleri aynı seslerden şikâyet ediyordu.”\n\nSelin’in anlattıkları beni rahatlatmadı. En azından tek kişinin duyduğu bir şey olmayabilir.\n\nSelin’in mesajında bir de şu var: “Rauf, her gece aynı saatte çatıyı fotoğraflardı. Sonra flaşını kapatıp uzun süre beklerdi.” Bunu ilk duyduğumda tuhaf bir hobi sandım. Şimdi o davranışın, gökyüzündeki ışığın ritmini ölçmekle ilgili olabileceğini düşünüyorum. Selin’in daha fazla bilgisi olup olmadığını öğrenmeliyiz.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Önceki kiracının ne yaşadığını sor.",
+          "next_scene": "S016",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "komsu_bilgisi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Selin’den evde kalmasını ve kapıyı kilitlemesini iste.",
+          "next_scene": "S016",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "komsuyla_yazisti"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S015",
+      "chapter": 2,
+      "title": "Sigorta kutusu",
+      "speaker": "Deniz",
+      "time": "03:28",
+      "text": "Sigorta kutusu girişin yanında. Bütün anahtarlar açık, kaçak akım rölesi atmıyor. Birini kapattım; tavandaki lambalar söndü ama duvardaki mavi çizgi kaybolmadı. Modem fişini çektiğimde bile telefon ekranının kenarında o halka bir an belirdi.\n\nElektrik sorunu tek başına yeterli açıklama değil. Panoya tekrar dokunmadım.\n\nAna şalteri kapatıp tekrar açtığımda bu kez modem dışında hiçbir şey değişmedi. Mavi çizgi duvarın boyasında parlamıyor; daha çok ekrana bakarken oluşan bir yansıma gibi. Ama telefonun kamerasını çevirdiğimde iz farklı bir noktaya kayıyor. Bu nedenle önce elektronik hattı, sonra da ışığın geldiği yönü incelemek istiyorum.",
+      "kind": "dialogue",
+      "image": "foto_daire_gece.jpg",
+      "image_caption": "İçerideki ışıklar sönse de dışarıdaki sabit parıltı kaybolmuyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kutunun fotoğrafını çekip geri dön.",
+          "next_scene": "S016",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "elektrik_kontrolu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Tüm ışıkları kapatıp birkaç saniye bekle.",
+          "next_scene": "S016",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "elektrik_kontrolu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S016",
+      "chapter": 2,
+      "title": "Eski zarf",
+      "speaker": "Deniz",
+      "time": "03:29",
+      "text": "Ayakkabılığın altında ince bir zarf buldum. Üstünde “Rauf Aydın - anten hattı” yazıyor. Ev sahibi geçen ay dairede eski bir radyo meraklısının yaşadığını söylemişti; taşınırken bazı eşyalarını bırakmış.\n\nZarfın içinde iki sayfa var. İlk satırda “Sesin kaynağına gitme. Önce tekrarın süresini ölç.” yazıyor. Kâğıt yeni değil, ama yazı okunuyor.\n\nZarfın köşesinde eski bir yönetim damgası var. Tarihi on iki yıl öncesine ait. Kâğıdın üstünde kat planına benzeyen ince bir çizim ve daire numaramın yanında küçük bir ok var. Rauf yalnızca çatıya çıkmamış; bu dairedeki kablo güzergâhını da işaretlemiş. Demek ki sinyali bir yerde tesadüfen fark edip sonra özellikle takip etmiş.",
+      "kind": "dialogue",
+      "image": "foto_izler_duvar.jpg",
+      "image_caption": "Zarfın bulunduğu yerdeki yüzey ve kablo izleri.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Notu tamamen okusun.",
+          "next_scene": "S017",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "eski_not_bulundu",
+            "not_okundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Notu fotoğraflayıp zarfı kapatsın.",
+          "next_scene": "S018",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "eski_not_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S017",
+      "chapter": 2,
+      "title": "Rauf’un notu",
+      "speaker": "Deniz",
+      "time": "03:30",
+      "text": "Notta şu yazıyor: “Anten hattı, yalnızca yayın alırken değil, gökyüzündeki darbeye denk geldiğinde de sinyal taşıyor. Aynı ses kırk bir saniye sonra geri geliyor. Bu, bir ses değil; çevreyi ölçen bir yankı.”\n\nAltında bir çizim var: iki kısa çizgi, bir uzun, sonra yine iki kısa çizgi. Yanına “Yanıt bekliyor olabilir. Ama ritmi anlamadan karşılık verme.” yazılmış. Bu bir şifre mi, yoksa Rauf’un kendi kendine kurduğu bir teori mi, bilmiyorum.\n\nNotun arka yüzünde bir uyarı daha var: “Gördüğün şekle ad verme. Ad verirsen onu tanıdığını sanırsın.” Bu cümle, Rauf’un kendi gördüklerinden emin olmadığını gösteriyor. Bana kalırsa o da bulduğu işaretleri açıklamak için bir teori geliştirmiş; ama teoriyle kanıtı birbirinden ayırmamız gerek.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Çizimdeki ritmi kaydet; şimdilik yanıt verme.",
+          "next_scene": "S019",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ritim_biliniyor",
+            "not_okundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Önce eski anten hattını bul.",
+          "next_scene": "S019",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S018",
+      "chapter": 2,
+      "title": "Zarfı kapat",
+      "speaker": "Deniz",
+      "time": "03:30",
+      "text": "Notu tamamen okumadım. Fotoğrafta yalnızca ilk satır görünüyor. Şu an bir yabancının yıllar önce yazdığı notun peşinden gitmek mantıklı gelmiyor. Ama zarfı da atmadım; üzerindeki isim ve “anten hattı” sözü bir yere bağlanıyor olabilir.\n\nBiraz daha güvenli bir şey yapmam lazım. Dairenin girişini ve anten kablosunun nereden geçtiğini kontrol edeceğim.\n\nZarfı kapatırken kâğıdın arasından ince bir kablo bağlantı şeması yere düştü. Şemada dairenin girişinden çatıya giden bir hat ve hattın ikiye ayrıldığı bir kutu işaretlenmiş. Ayrıntıları okumadan bile, bulduğumuz servis kapağıyla aynı yerde olduğunu fark ediyorum. Bu bilgi işe yarayabilir; belki de daireden çatıya çıkmadan sinyali kesebiliriz.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Girişteki kabloyu gözle takip et.",
+          "next_scene": "S019",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Zarfın fotoğrafını sana gönder.",
+          "next_scene": "S019",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "eski_not_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S019",
+      "chapter": 2,
+      "title": "Kablo duvarın içinde",
+      "speaker": "Deniz",
+      "time": "03:31",
+      "text": "Kapının yanındaki ince kablo, eski televizyon anteni kablosu. Süpürgeliğin arkasından geçiyor ve tavana doğru kayboluyor. Daha önce hiç dikkat etmemiştim.\n\nKablonun yakınındaki duvar soğuk, diğer tarafı normal. Telefonun kamerasını açınca görüntü bir an parazitlendi ve üç küçük ışık yanıp söndü. Kabloyu çekmek istemiyorum; önce nereye gittiğini öğrenmeliyiz.\n\nKablo eski, fakat üstündeki izolasyonun bir kısmı yeni gibi. Dairedeki tadilat sırasında eski hat bırakılmış olabilir. Eğer sinyal bu kablodan geçiyorsa, duvardaki izlerin de kablonun çevresinde yoğunlaşması açıklanabilir. Bu hâlâ yalnızca bağlantı; sinyalin kendisinin kabloyu fiziksel olarak çizdiğini bilmiyoruz.",
+      "kind": "dialogue",
+      "image": "foto_izli_kapi.jpg",
+      "image_caption": "Duvarın üstündeki eski izlerin yakınından geçen anten hattı.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kablonun giriş ve çıkış noktalarını fotoğraflasın.",
+          "next_scene": "S020",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "anten_hatti_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Kabloya dokunmadan geri çekilsin.",
+          "next_scene": "S021",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S020",
+      "chapter": 2,
+      "title": "Anten dağıtım kutusu",
+      "speaker": "Deniz",
+      "time": "03:32",
+      "text": "Kablo, girişin üstündeki küçük servis kapağına gidiyor. Kapağın vidaları paslanmış ama alt kenarı gevşek. İçeride eski bir dağıtım kutusu ve çatıda kullanılan kabloya giden ikinci bir hat var.\n\nKutunun üzerinde yeni bir çizik var. Metalin üstünde, duvardaki işaretle aynı halka duruyor. Bu hattın bozukluğu rastgele değil gibi görünüyor.\n\nKutunun kapağında üretici etiketi neredeyse silinmiş. Altındaki vida başlarından biri yeni çizilmiş; yakın zamanda biri kutuyu açmış olabilir. Eğer bunu bina yöneticisi yaptıysa, neden söylemediğini bilmiyorum. Kutunun fotoğrafını ve vida izini saklıyorum. Şimdi kabloyu kesmek yerine önce neye bağlı olduğunu anlamak daha doğru.",
+      "kind": "dialogue",
+      "image": "foto_izler_duvar.jpg",
+      "image_caption": "Servis kapağı çevresindeki duvar izleri; dağıtım kutusu henüz açılmıyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kutuyu açmadan fotoğrafla ve kapat.",
+          "next_scene": "S022",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "dagitim_kutusu_bulundu",
+            "anten_hatti_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Kablonun hangi yöne gittiğini takip et.",
+          "next_scene": "S022",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "anten_hatti_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S021",
+      "chapter": 2,
+      "title": "Uzak dur",
+      "speaker": "Deniz",
+      "time": "03:32",
+      "text": "Kabloyu ellemiyorum. Odaya döndüm ama duvarın içinden gelen vuruşlar artık daha sessiz değil; sanki ses evin içinden değil, telefonun hoparlöründen yayılıyor.\n\nBir karar vermeden önce seni aramam daha doğru. Yazışırken bir ayrıntıyı kaçırıyorum. Görüntülü arama açacağım, ama lütfen bana bir şeyi yapmamı söylemeden önce ekranda ne gördüğünü kontrol et.\n\nTelefonumun ön kamerasında yüzüm normal görünüyor, ama arka kameraya geçince gözlerimin kenarında kısa bir parıltı oluşuyor. Bu bir ekran yansıması olabilir. Sana yazdığım mesajlar geçiyor; görüntülü aramada ise hareketle görüntü arasında gecikme var. Belki de bu bağlantı, olanları daha iyi anlamamızı sağlayacak.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Görüntülü aramayı aç.",
+          "next_scene": "S022",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "goruntulu_arama_istendi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Önce evdeki bütün ışıkları açsın.",
+          "next_scene": "S022",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S022",
+      "chapter": 3,
+      "title": "Görüntülü arama",
+      "speaker": "Deniz",
+      "time": "03:33",
+      "text": "Arama başladı. Ön kamerada yüzümü görüyorsun; şimdi telefonu çevireceğim. Arka kameradan koridoru göstereceğim.\n\nBir şey fark ettim: görüntüdeki koridor, gözümle gördüğümden daha uzun. Kapının sonundaki karanlık bölüm kamerada birkaç metre daha uzuyor. Telefonu oynattığımda görüntü hemen gelmiyor; küçük bir gecikme var.\n\nBir dakika boyunca bana yolu tarif eder misin? Koridorda tek başıma ilerlemek istemiyorum.\n\nVideo görüşmesi için telefonu dik tutuyorum. Şarjım azalıyor ama aramayı kapatırsam görüntüdeki gecikmeyi yeniden ölçemem. Senin tarafında görünen oda benim gördüğüm odayla aynı değilse, bu farkı kaydetmemiz gerekiyor. Telefonu döndürmeden önce saati söylüyorum: 03.33. Böylece fotoğraf ve ses dosyalarıyla karşılaştırabiliriz.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Arka kameraya geç ve birlikte kontrol edelim.",
+          "next_scene": "S023",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "goruntulu_arama_istendi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S023",
+      "chapter": 3,
+      "title": "Arka kamera açıldı",
+      "speaker": "Deniz",
+      "time": "03:34",
+      "text": "Görüntü artık arka kameradan geliyor. Alt solda hareket çubuğu, sağda etkileşim düğmesi var. Bu bölümde Deniz’in hareketini yönlendirebilecek, kapı kolunu kontrol edebilecek ve perdeyi aralayabileceksin.\n\nBu yalnızca bir video değil. Ekrandaki hareketlerime göre ben de adım atıyormuşum gibi hissediyorum. Neden böyle olduğunu bilmiyorum; bağlantı bir anlığına telefonla benim aramdaki sınırı kaldırmış gibi.\n\nEkranındaki hareket çubuğu, normal bir telefon görüşmesinde bulunmaması gereken bir kontrol. Ben dokunmadan da sanki yönlendiriliyormuşum gibi hissediyorum. Bunun fiziksel olarak nasıl mümkün olduğunu bilmiyorum; oyunun dünyasında sinyal, hareket niyetini telefonla karakter arasında eşleştirebilir. Sen yalnızca görüntüyü takip et ve beklenmeyen bir şey görürsen etkileşim düğmesine basma.",
+      "kind": "video_control",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [],
+      "control": {
+        "background": "foto_salon.jpg",
+        "objective": "Koridoru kontrol et, servis kapağını incele ve pencereyi güvenli biçimde gör.",
+        "avatar": "deniz_portre.jpg",
+        "next_scene": "S024",
+        "steps": [
+          {
+            "direction": "up",
+            "move_label": "Koridora ilerle",
+            "action_label": "Kapı yanında dur",
+            "move_result": "Deniz koridora ilerliyor. Görüntü uzuyor, ancak ayak sesleri yarım saniye geriden geliyor.",
+            "result": "Kapı eşiğinde durdun. Zemindeki toz çizgisi, duvardaki işaretin önünde kesiliyor.",
+            "set_flags": [
+              "koridora_girdi"
+            ],
+            "effects": [
+              {
+                "variable": "tehlike",
+                "delta": 1
+              }
+            ],
+            "target": "kapi_esigi"
+          },
+          {
+            "direction": "right",
+            "move_label": "Servis kapağına yaklaş",
+            "action_label": "Kapağı arala",
+            "move_result": "Sağa kaydın. Kamera eski servis kapağını netleştiriyor.",
+            "result": "Kapağın içinde eski anten kablosu görünüyor. Metal yüzey, kamerada nabız atar gibi parlıyor.",
+            "set_flags": [
+              "servis_kapagi_goruldu",
+              "anten_hatti_bulundu"
+            ],
+            "effects": [
+              {
+                "variable": "kanıt",
+                "delta": 1
+              }
+            ],
+            "target": "servis_kapagi"
+          },
+          {
+            "direction": "left",
+            "move_label": "Salona doğru dön",
+            "action_label": "Perdeyi arala",
+            "move_result": "Sola döndün ve salon penceresinin yanına geldin. Dışarıdaki şehir ışıkları yerli yerinde.",
+            "result": "Perdeyi aralayınca boğazın üstünde sabit duran mavi ışık beliriyor. Çıplak gözle bakınca zayıflıyor; kamerada ise iki halka var.",
+            "set_flags": [
+              "perde_aralandi",
+              "gokyuzu_goruldu"
+            ],
+            "effects": [
+              {
+                "variable": "kanıt",
+                "delta": 1
+              }
+            ],
+            "target": "perde"
+          },
+          {
+            "direction": "up",
+            "move_label": "Pencereye yaklaş",
+            "action_label": "Fotoğraf çek",
+            "move_result": "Pencereye yaklaştın. Görüntüde camın üzerinde ikinci bir koridor yansıyor.",
+            "result": "Fotoğrafta senin bulunduğun yerin arkasında uzun bir şekil var. Arkanı döndüğünde orada kimse yok.",
+            "set_flags": [
+              "yansimada_sekil",
+              "foto_sekil"
+            ],
+            "effects": [
+              {
+                "variable": "tehlike",
+                "delta": 1
+              },
+              {
+                "variable": "kanıt",
+                "delta": 1
+              }
+            ],
+            "target": "pencere"
+          }
+        ],
+        "room": "Salon"
+      },
+      "ending": null
+    },
+    {
+      "id": "S024",
+      "chapter": 3,
+      "title": "Arama sonrası",
+      "speaker": "Deniz",
+      "time": "03:37",
+      "text": "Aramayı kapattım ama hâlâ elim titriyor. Sen de gördün: fotoğraftaki şekil, arkamdaki boşluğu dolduruyor. Ben dönmeden önce oradaydı; dönünce yok oldu.\n\nKendimi sakinleştirmek için fotoğrafı üç kez açtım. Her seferinde aynı yerde, ama biraz farklı açıyla duruyor. Bu bir insan değil. İnsan olsaydı kameranın gecikmesiyle açıklanabilecek bir hareket görürdüm. Burada şekil, fotoğrafın içinde yer değiştiriyor.\n\nGörüntüdeki şeklin ne olduğunu bilmiyorum. Yansıma mı, kameranın kareleri birleştirme hatası mı, yoksa sinyalin ortaya çıkardığı bir desen mi? Tek bir fotoğraf bunu açıklamaz. Ama görüntünün benden bağımsız yer değiştirmesi ve aynı 41 saniyelik aralıkta tekrar görünmesi, fotoğrafları hikâyenin ana kanıtı hâline getiriyor.",
+      "kind": "dialogue",
+      "image": "foto_izli_kapi.jpg",
+      "image_caption": "Görüntülü arama sırasında çekilmiş, gerçekte görünmeyen siluete ait kare.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Fotoğrafı sakla ve görüntüdeki değişimi karşılaştır.",
+          "next_scene": "S025",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "foto_sekil"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Telefonu kapatıp birkaç dakika beklesin.",
+          "next_scene": "S026",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S025",
+      "chapter": 3,
+      "title": "İki kare arasındaki boşluk",
+      "speaker": "Deniz",
+      "time": "03:38",
+      "text": "İki görüntüyü yan yana koydum. Koridor aynı, kapı aynı, ışık aynı. Sadece camdaki yansıma farklı. Bir karede boş, diğerinde uzun bir gölge var. Fotoğrafın çekildiği saatler arasında 41 saniye var.\n\nSeslerdeki tekrar aralığıyla aynı. Bu iki olayın birbirinden bağımsız olduğunu düşünmek giderek zorlaşıyor.\n\nİkinci kareyi ilk kareyle hizalayınca camın kenarındaki çizgi tamamen aynı yerde kalıyor; yalnızca uzun gölge farklı konumda. Telefonun saatinde hata olmadığını kontrol ettim. Fotoğraf uygulaması her dosyaya farklı bir pozlama süresi yazmış, ancak 41 saniyelik aralık korunmuş. Bu, ölçüm sisteminin görüntüleri belirli aralıklarla aldığı ihtimalini güçlendiriyor.",
+      "kind": "dialogue",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "Birbirinden 41 saniye arayla çekilmiş iki kare arasındaki fark.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "İki kareyi ve saatlerini kanıt olarak sakla.",
+          "next_scene": "S027",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gecikme_dogrulandi",
+            "foto_sekil"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Selin’e mesaj atıp onun da dışarıda ışık görüp görmediğini sor.",
+          "next_scene": "S027",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "komsuyla_yazisti"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S026",
+      "chapter": 3,
+      "title": "Karanlıkta beklemek",
+      "speaker": "Deniz",
+      "time": "03:38",
+      "text": "Telefonu kapatıp bekledim. İlk yarım dakika hiçbir şey olmadı. Sonra duvarın içinden tek bir vuruş geldi. Bu kez sesin ardından değil, sesle aynı anda telefonun ekranı yandı.\n\nEkranda bir fotoğraf bildirimi vardı ama galeriye kaydedilmiş bir fotoğraf değildi. Kamera uygulaması kapalı olduğu hâlde önizlemede kendi koridorumu gördüm. Kimseye göndermedim; ekran görüntüsünü aldım.\n\nEkran görüntüsünün dosya boyutu da normal değil; aynı telefonla çektiğim diğer görüntülerden çok daha küçük. Fotoğraf galeriye kaydedilmemiş, sanki kamera önizlemesi geçici olarak ekrana bindirilmiş. Bir uygulamanın çökmesi olabilir, ama o karedeki koridorun güncel hâli değil, kırk bir saniye önceki hâli görünüyor.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Ekran görüntüsünü sakla ve bir daha açma.",
+          "next_scene": "S027",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ekran_goruntusu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Telefonu yeniden başlatmayı dene.",
+          "next_scene": "S027",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S027",
+      "chapter": 3,
+      "title": "Selin’in uyarısı",
+      "speaker": "Deniz",
+      "time": "03:39",
+      "text": "Selin yeniden yazdı: “Benim penceremde de ışık var. Ama telefonla bakınca başka bir şey görünüyor. Perdeyi kapattım. Önceki kiracı Rauf, çatı anteniyle uğraşırdı. Bir gece sonra evi boşalttı. Kimse nedenini bilmiyor.”\n\nBunu okuyunca evin içindeki izler bana ait olmaktan çıktı. Daha önce biri aynı şeyi yaşamış ve evden gitmiş olabilir. Ama Rauf’un ne gördüğünü bilmiyoruz.\n\nSelin artık mesaj yazarken sürekli duraksıyor. “Rauf, evden ayrılmadan önce yöneticiye tüm anten tesisatını sökmesini söylemiş. Ama kimse çatıdaki hattı bulamamış,” diyor. Bu, hattın görünenden daha karmaşık olabileceği anlamına geliyor. Selin’in yaşadığı korkunun da gerçek olması, Deniz’in yalnızca yanlış bir şey gördüğü açıklamasını zayıflatıyor.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Selin’den Rauf’un bıraktığı eşyaları sor.",
+          "next_scene": "S028",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "komsu_bilgisi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Çatıya çıkmadan önce eski notu tekrar incele.",
+          "next_scene": "S028",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "notu_tekrar_incele"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S028",
+      "chapter": 3,
+      "title": "Rauf’un eşyaları",
+      "speaker": "Deniz",
+      "time": "03:40",
+      "text": "Selin, Rauf’un birkaç eski eşyasının bina yönetimindeki dolapta kaldığını söyledi. Yönetici yıllar önce taşınırken kutuyu atmaya kıyamamış. Kutuda küçük bir radyo alıcısı ve kaset varmış.\n\nSelin’in fotoğrafını gönderdiği kâğıtta da “çatı hattı” yazıyor. Bu, dairenin içinden geçen kablonun çatıya bağlandığını doğruluyor. Eski notu ve ses kaydını birlikte anlamamız gerekiyor.\n\nYönetici, kutunun eski olduğunu ve önceki kiracının elektronik eşyalarını bırakmasına izin verdiğini doğruladı. Rauf’un eşyaları bir depoda duruyor çünkü aile üyeleri gelip almamış. Yönetici onun kaybolduğunu söylemiyor; yalnızca taşındığını ve sonra kendisinden haber alınamadığını biliyor. Böylece kayıp hikâyesi söylenti olarak kalıyor, kesin bir bilgiye dönüşmüyor.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kutudaki kaseti ve alıcıyı incelemesini söyle.",
+          "next_scene": "S029",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "eski_esya_bilgisi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Yöneticiye mesaj atıp kutunun fotoğrafını iste.",
+          "next_scene": "S029",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "yoneticiye_yazdi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S029",
+      "chapter": 4,
+      "title": "Eski alıcı",
+      "speaker": "Deniz",
+      "time": "03:42",
+      "text": "Kutuda küçük bir alıcı, kısa bir anten kablosu ve kaset var. Kasetin üstünde Rauf’un el yazısıyla “41 saniye - 2/1/2” yazıyor. Alıcıyı açınca şehir radyoları değil, alçak ve sabit bir titreşim duyuluyor.\n\nSesin altında iki kısa, bir uzun, iki kısa aralık var. Aynı ritim notta da çizilmişti. Bu bir çağrı olabilir, ama çağrıya cevap vermek güvenli olduğu anlamına gelmez.\n\nAlıcının üzerinde küçük bir ayar düğmesi ve eski bir ses seviyesi skalası var. Kasetin etiketinde tarih yok; yalnızca “41 saniye - 2/1/2” yazıyor. Bu notun ne zaman alındığını bilmemek önemli. Rauf bu sinyali bu gece mi duydu, yıllar önce mi, bilmiyoruz. Kayıt, tek başına varlığın kökenini açıklamaz; yalnızca örüntünün tekrarlandığını gösterir.",
+      "kind": "dialogue",
+      "image": "foto_eski_alici.jpg",
+      "image_caption": "Rauf’un bıraktığı eski alıcı; kasetin üzerinde “41 saniye - 2/1/2” yazıyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kaseti dinleyip örüntüyü not et.",
+          "next_scene": "S030",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "kaset_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Sadece fotoğrafını çek ve alıcıyı kapat.",
+          "next_scene": "S031",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "kaset_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S030",
+      "chapter": 4,
+      "title": "Kasetteki ses",
+      "speaker": "Deniz",
+      "time": "03:43",
+      "text": "Kasette Rauf’un sesi duyuluyor. “Bunu duyan biri varsa, anteni hemen sökme. Önce tekrar süresini doğrula. Bu ses bir dil değil. Şekli ölçüyor, hareketi kopyalıyor. Camda gördüğün şey dışarıda duran bir canlı olmayabilir. Sana baktığını sanma; bulunduğun yeri ölçüyor olabilir.”\n\nSonra iki kısa, bir uzun, iki kısa vuruş geliyor. Kayıt bitmeden önce Rauf “Yanıt vereceksen aynı ritimle ver. Başka bir şey deneme.” diyor. Bu, o işaretin neden tekrarlandığını açıklamaya yetmiyor ama bir yol sunuyor.\n\nRauf’un sesinde panik yok, ama kelimeler arasında uzun boşluklar var. Sanki kayıt sırasında bir sesi dinlemek için duruyormuş. “Şekli ölçüyor” derken bunun bir cihaz mı, canlı bir şey mi olduğunu söylemiyor. Bu belirsizliği korumak istiyorum. Şu an doğru karar, bilmediğimiz şeyi bildiğimizi iddia etmeden bir sonraki işareti gözlemlemek.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Ritmi ve ses kaydını kaydet.",
+          "next_scene": "S032",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ritim_biliniyor",
+            "kaset_dinlendi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Kayıdı kapatıp daha fazla kanıt toplamadan ilerleme.",
+          "next_scene": "S032",
+          "effects": [],
+          "set_flags": [
+            "kaset_dinlendi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S031",
+      "chapter": 4,
+      "title": "Kutunun fotoğrafı",
+      "speaker": "Deniz",
+      "time": "03:43",
+      "text": "Alıcıyı kapattım ve fotoğrafını çektim. Üzerindeki bağlantı noktası, dairedeki servis kutusuna giden kabloyla aynı tipte. Yani Rauf bu hattı kendi başına kurmamış; binanın eski anten tesisatını kullanmış.\n\nKaseti dinlemeden önce bile bu hattın olaylarla ilişkili olduğuna dair kanıtımız var. Ama sesin ne anlattığını bilmiyoruz.\n\nKasetin dış yüzeyinde parmak izi gibi görünen koyu bir leke var. Fotoğrafta halka şeklinde, ama eldiven izi de olabilir. Bunu olağanüstü bir kanıt diye sunmayacağım; sadece kutunun diğer parçalarıyla birlikte saklayacağım. Bazen en ürkütücü şey, kanıtların çok net olmaması. Her açıklama bir ihtimali kapatırken başka bir soruyu açık bırakıyor.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kaseti açıp son kısmını dinle.",
+          "next_scene": "S032",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "kaset_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Kaseti yanında tutup çatıya giden yolu bul.",
+          "next_scene": "S032",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S032",
+      "chapter": 4,
+      "title": "Örüntü doğrulandı",
+      "speaker": "Deniz",
+      "time": "03:44",
+      "text": "Üç ayrı şey birbiriyle örtüşüyor: evde duyduğumuz tekrar, fotoğraftaki 41 saniyelik fark ve kasetteki ritim. Bunların hepsi aynı sinyalle ilişkili olabilir.\n\nYine de elimizde yalnızca bir teori var. Rauf, sinyalin “çevreyi ölçtüğünü” söylüyor; bunu nereden bildiğini açıklamıyor. Bunu doğrulamak için çatıya çıkmak zorunda mıyız, emin değilim.\n\nRauf’un çizdiği ritim kolayca hatırlanıyor, fakat bunu rastgele yanıp sönen bir ışıkla karıştırmamak gerek. İki kısa ışık, bir uzun, ardından iki kısa ışık. Telefonun feneriyle bunu denemeden önce çatıdaki nesnenin gerçekten aynı ritimde yanıp söndüğünü birkaç kez doğrulamak istiyorum. Yanlış bir sinyali cevap sanmak, bizi hiç bilmediğimiz bir şeye yaklaştırabilir.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Notta yazan ritmi öğren; karşılık verme kararını sonraya bırak.",
+          "next_scene": "S033",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ritim_biliniyor"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Şimdilik sinyali kapatmanın yolunu bul.",
+          "next_scene": "S033",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S033",
+      "chapter": 4,
+      "title": "Çatıya giden kapı",
+      "speaker": "Deniz",
+      "time": "03:45",
+      "text": "Çatı kapısı, merdiven boşluğunun üst katında. Yönetici geçen ay kilidi değiştirmiş ama acil çıkış mekanizması içeriden açılıyor. Telefonumun pili yüzde on iki.\n\nBir kez daha görüntülü arama açacağım. Arka kamerayla merdivenleri görebilirsin. Kapıya ulaştığımda kolu indirmeni ve ardından çatının ışığını açmanı isteyeceğim. Eğer görüntüde bir şey görürsen, bana hemen söyle.\n\nMerdiven kapısına giderken ayak seslerimin ardından ikinci bir çift ses duyuyorum. Kendi adımlarım durduğunda onlar da duruyor. Telefonu sabit tuttuğumda görüntüde bir an için iki farklı sahanlık üst üste biniyor. Yine de kapının kolu gerçek, merdivenler gerçek ve geri dönme seçeneğim var. Çatıya çıkmak zorunda değiliz; ama orada bir bağlantı noktası olmalı.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Görüntülü aramayı tekrar aç; merdivenlerde yönlendir.",
+          "next_scene": "S034",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ikinci_arama"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S034",
+      "chapter": 4,
+      "title": "Merdiven boşluğu",
+      "speaker": "Deniz",
+      "time": "03:46",
+      "text": "Arka kamera açıldı. Merdiven boşluğu normal görünüyor ama her kat sahanlığında aynı mavi ışık yansıması var. Kamerayı çevirince ışık yer değiştiriyor; gözle bakınca hiçbir şey yok.\n\nBu kez telefonun hareket çubuğu daha hassas. Sol ve sağla yön değiştirebilir, ileriyle merdivenleri çıkabilir, etkileşim düğmesiyle kapı kolunu ve çatı aydınlatmasını kontrol edebilirsin.\n\nÇatı kapısının arkasında dışarıdaki rüzgârın sesi yok. Kapıyı açınca sesin bir anda geri gelmesi, aradaki sessizliğin doğal olmadığını düşündürüyor. Işık düğmesi duvarın yanında; düğmeye basmadan önce kamerada üç küçük parıltı beliriyor. Bunları bir göz yanılması olarak kabul edebilirim, ancak daha önceki örüntülerle birlikte kaydetmek daha doğru.",
+      "kind": "video_control",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [],
+      "control": {
+        "background": "foto_daire_gece.jpg",
+        "objective": "Merdivenlerden çatı kapısına ulaş, kapıyı aç ve çatı ışığını etkinleştir.",
+        "avatar": "deniz_portre.jpg",
+        "next_scene": "S035",
+        "steps": [
+          {
+            "direction": "up",
+            "move_label": "Merdivenlerden yukarı çık",
+            "action_label": "Sahanlıkta dur",
+            "move_result": "Deniz bir kat daha çıkıyor. Ayak sesleri sanki bir kat aşağıdan tekrar ediyor.",
+            "result": "Sahanlıkta durdun. Kapının altından içeri değil, dışarı doğru mavi bir çizgi sızıyor.",
+            "set_flags": [
+              "merdivene_cikti"
+            ],
+            "effects": [
+              {
+                "variable": "tehlike",
+                "delta": 1
+              }
+            ],
+            "target": "sahanlik"
+          },
+          {
+            "direction": "right",
+            "move_label": "Çatı kapısına yaklaş",
+            "action_label": "Kapı kolunu indir",
+            "move_result": "Çatı kapısına yaklaştın. Görüntüde kapı kolu bir an iki tane görünüyor.",
+            "result": "Kapı açıldı. Kilit sağlam, ama karşı taraftan çok hafif bir titreşim geliyor.",
+            "set_flags": [
+              "cati_kapisi_acildi"
+            ],
+            "effects": [
+              {
+                "variable": "kanıt",
+                "delta": 1
+              }
+            ],
+            "target": "cati_kapisi"
+          },
+          {
+            "direction": "up",
+            "move_label": "Çatıya çık",
+            "action_label": "Çatı ışığını aç",
+            "move_result": "Çatıya çıktın. Kamera bir an kararıyor; sonra şehir manzarası beliriyor.",
+            "result": "Çatı ışığı yandı. Şehrin üstünde sabit duran nokta, ışığın açılmasıyla daha parlak hâle geldi.",
+            "set_flags": [
+              "catiya_cikti",
+              "cati_isigi"
+            ],
+            "effects": [
+              {
+                "variable": "tehlike",
+                "delta": 1
+              }
+            ],
+            "target": "cati_isigi"
+          }
+        ],
+        "room": "Merdiven"
+      },
+      "ending": null
+    },
+    {
+      "id": "S035",
+      "chapter": 4,
+      "title": "Şehrin üstündeki nokta",
+      "speaker": "Deniz",
+      "time": "03:48",
+      "text": "Çatıda, İstanbul’un ışıkları altında küçük bir nesne var. Büyük bir gemi değil; şehirden bakınca bir bozuk piksel gibi. Ama telefon ekranında çevresinde dönen iki halka ve aşağıya uzanan ince bir ışık çizgisi görünüyor.\n\nNesne hareket etmiyor. Çevresindeki bulutlar ilerliyor, Boğaz’daki gemiler yer değiştiriyor, ama o nokta aynı yerde duruyor. Birkaç saniyeliğine ışık çizgisi doğrudan binanın çatısına değiyor.\n\nNesnenin kenarları katı bir cisim gibi keskin değil. Sanki görüntü, çevresindeki karanlığı kendine doğru büküyor. Şehrin ışıkları arkasında kaldığında bile nesnenin içinden geçen ince çizgi görünmeye devam ediyor. Onun bir araç mı, canlı mı, yoksa yalnızca bir ölçüm görüntüsü mü olduğunu bilmiyoruz. Bu yüzden adını koymadan fotoğrafını çekmek istiyorum.",
+      "kind": "dialogue",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "İstanbul üzerinde hareketsiz duran ışık; telefon kamerasında iki halka beliriyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Nesnenin fotoğrafını çek ve saati kaydet.",
+          "next_scene": "S036",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "gokyuzu_fotografi",
+            "nesne_goruldu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Video kaydı al; telefonun sabit durmasını sağla.",
+          "next_scene": "S037",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "nesne_goruldu",
+            "video_kaydi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Çatı ışığını kapatıp geriye çekil.",
+          "next_scene": "S038",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [
+            "nesne_goruldu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S036",
+      "chapter": 5,
+      "title": "Fotoğraftaki gölge",
+      "speaker": "Deniz",
+      "time": "03:49",
+      "text": "Fotoğrafı çektim. Nesne net değil, ama ışık çizgisi apartmanın çatısına kadar iniyor. Daha tuhafı, fotoğrafın alt köşesinde benim gölgem var; gölgemin yanında daha uzun, başı olmayan başka bir şekil görünüyor.\n\nGerçekte yanımda kimse yok. Telefonu çevirdiğimde boş çatı görünüyor. Fotoğrafta ise o şekil, kameraya dönmüş gibi.\n\nGölgenin kenarında ikinci bir ışık halkası var. Benim bedenimin gölgesi yerdeki korkuluğa doğru uzanırken, diğer şeklin gölgesi ışık kaynağına doğru gidiyor. Bu, fiziksel ışık açısından tutarsız. Fotoğrafı yeniden çektiğimde şeklin açısı değişiyor, ama çatının gerçek korkuluğu aynı kalıyor. Kamera bir şey gösteriyor; ama bunun dış dünyada aynı biçimde bulunduğu kesin değil.",
+      "kind": "dialogue",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "Çatı fotoğrafındaki ikinci gölge çıplak gözle görünmüyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Fotoğrafı yedekle ve aynı açıdan bir tane daha çek.",
+          "next_scene": "S039",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "yansimada_sekil",
+            "foto_sekil"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Fotoğrafı gönder ve çatı kapısına dön.",
+          "next_scene": "S039",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "foto_sekil"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S037",
+      "chapter": 5,
+      "title": "Kayıttaki ritim",
+      "speaker": "Deniz",
+      "time": "03:49",
+      "text": "Videoyu izlerken nesnenin çevresindeki ışığın belirli aralıklarla parladığını fark ettim. İki kısa, bir uzun, iki kısa. Kasetteki örüntüyle aynı.\n\nBu, Rauf’un notunun doğru olduğu anlamına gelmeyebilir; ama tesadüf açıklaması artık zayıf. Nesne yalnızca sabit durmuyor, bir örüntü gönderiyor. Bizim cevap vermemizi mi bekliyor, yoksa çevreyi taramak için mi kullanıyor, bilmiyoruz.\n\nKayıt üzerinde iki nokta arasında geçen süreyi kare kare ölçtüm. İki kısa ışık arasındaki boşluk, uzun ışığın süresinden daha kısa; kayıtta üç tekrar var ve hepsi aynı sırayı koruyor. Bu, kasetteki ritimle eşleşiyor. Hâlâ ne anlama geldiğini bilmiyoruz, ancak yanıt vereceksek rastgele bir şey yapmak yerine bu sırayı takip etmeliyiz.",
+      "kind": "dialogue",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "Videodaki ışık aralıkları, Rauf’un notundaki örüntüyle eşleşiyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Ritmi kaydet ve nottaki bilgiyle karşılaştır.",
+          "next_scene": "S039",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "ritim_biliniyor",
+            "video_kaydi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Telefonu aşağı indir; daha fazla yaklaşma.",
+          "next_scene": "S039",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "video_kaydi"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S038",
+      "chapter": 5,
+      "title": "Işığı söndür",
+      "speaker": "Deniz",
+      "time": "03:49",
+      "text": "Çatı ışığını kapattım. Nesne kaybolmadı; sadece ışık çizgisi kesildi. Birkaç saniye sonra binanın anten hattı boyunca mavi bir parıltı ilerledi ve dairenin penceresinde durdu.\n\nBu, sinyalin çatıdan eve gittiğini düşündürüyor. Işık hâlâ orada ama artık daha sönük. Geri dönüp kabloyu ayırabiliriz ya da örüntüyle cevap vermeyi deneyebiliriz.\n\nIşık sönünce çatı karanlıkta kaldı, ama telefon ekranı bir süre daha mavi parladı. Parıltı, anten kablosunun geçtiği duvar yönüne doğru hareket etti. Bu, sinyalin kabloya bağlı olduğu fikrini destekliyor. Çatı ışığını tekrar açarsam nesnenin yanıtı güçlenebilir; kapalı tutarsam ise onu görmeyi zorlaştırabilirim. Şimdi seçimin, neyi öğrenmek istediğine bağlı.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Daireye dönüp anten hattını son kez kontrol et.",
+          "next_scene": "S039",
+          "effects": [
+            {
+              "variable": "guven",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Nottaki ritmi kullanarak cevap vermeyi dene.",
+          "next_scene": "S039",
+          "effects": [],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [
+              "ritim_biliniyor"
+            ],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Tam olarak bilmediğin bir ışıkla cevap vermeyi dene.",
+          "next_scene": "S039",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [
+              "ritim_biliniyor"
+            ],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S039",
+      "chapter": 5,
+      "title": "Birbiriyle eşleşen kanıtlar",
+      "speaker": "Deniz",
+      "time": "03:50",
+      "text": "Artık tek bir görüntüye güvenmiyorum. Ses kayıtları, fotoğraflar ve eski kaset aynı şeye işaret ediyor: sinyal, tekrar aralıklarıyla mekânı ölçüyor. Anten kablosu bunu daireye taşıyor. Fotoğraflardaki şekil ise belki de varlığın kendisi değil, ölçüm sırasında camda oluşan bir görüntü.\n\nBunların hepsi hâlâ bir teori. Ama bir sonraki karar, teoriyle gerçeği ayıracak. Çatıdaki ışık iki kısa, bir uzun, iki kısa biçiminde yanıp sönüyor. Bu örüntüyü geri gönderebiliriz ya da hattı kesip uzaklaşabiliriz.\n\nSinyal, evin içinde bir şey arıyorsa bunun kişi olduğunu varsaymak için nedenimiz yok. Rauf’un notu ve kaset, hareketlerin tekrarlandığını, yansımaların kaydedildiğini ve hattın sinyali büyüttüğünü gösteriyor. Bu, bir avcıdan çok çevreyi haritalayan bir keşif sistemine benziyor. Ancak haritalanmak da tehlikesiz değil: sistemin amacını bilmiyoruz ve onu neyin tetiklediğini anlamak zorundayız.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Bütün kanıtları kaydet ve son kararı ver.",
+          "next_scene": "S040",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Anten hattının fotoğrafını çekip son karara geç.",
+          "next_scene": "S040",
+          "effects": [
+            {
+              "variable": "kanıt",
+              "delta": 1
+            }
+          ],
+          "set_flags": [
+            "anten_hatti_bulundu"
+          ],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S040",
+      "chapter": 5,
+      "title": "Son açıklama",
+      "speaker": "Deniz",
+      "time": "03:51",
+      "text": "Rauf’un notu artık daha anlamlı. “Sana baktığını sanma; bulunduğun yeri ölçüyor olabilir.” Bu varlık, bir insan gibi kapıyı açmaya çalışmıyor. Sesleri, ışıkları ve yansımaları kullanarak evin içindeki hareketleri kaydediyor olabilir.\n\nAnten hattı sinyali büyütüyor; telefonun kamerası da çıplak gözün algılamadığı aralıkları yakalıyor. Bu nedenle fotoğrafta bir şekil varmış gibi görünüyor. Yine de nesnenin neden İstanbul üzerinde olduğu ve ne aradığı bilinmiyor.\n\nBu açıklama bizi rahatlatmıyor. Bir şeyin bizi avlamaması, bize zarar veremeyeceği anlamına gelmez. Eğer sinyal yalnızca ölçüm yapıyorsa bile, insan hareketlerini ve yansımalarını kopyalaması evin içindeki güven hissini yok ediyor. Artık üç yol var: hattı kesmek, öğrendiğimiz örüntüyle yanıt vermek veya bilinmeyen şeye yaklaşmak. Hangisini seçeceğimiz, bildiklerimizden çok ne kadar risk almaya hazır olduğumuza bağlı.",
+      "kind": "dialogue",
+      "image": null,
+      "image_caption": null,
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [
+        {
+          "text": "Kabloyu ayırıp merdivenlerden aşağı in.",
+          "next_scene": "S041",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": -1
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Örüntüye doğru şekilde karşılık ver.",
+          "next_scene": "S042",
+          "effects": [],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [
+              "ritim_biliniyor"
+            ],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        },
+        {
+          "text": "Ne olduğunu anlamak için ışığa yaklaş.",
+          "next_scene": "S043",
+          "effects": [
+            {
+              "variable": "tehlike",
+              "delta": 2
+            }
+          ],
+          "set_flags": [],
+          "clear_flags": [],
+          "conditions": {
+            "flags_any": [],
+            "flags_none": [],
+            "variables_min": {},
+            "variables_max": {}
+          }
+        }
+      ],
+      "control": null,
+      "ending": null
+    },
+    {
+      "id": "S041",
+      "chapter": 6,
+      "title": "FİNAL 1 - KURTULUŞ",
+      "speaker": "Deniz",
+      "time": "03:53",
+      "text": "Servis kapağını açtım ve anten hattını dağıtım kutusundan ayırdım. Mavi çizgi bir anda söndü. Çatının üstündeki nokta da ışığını kapattı; sonra karanlığa karıştı.\n\nMerdivenlerden inerken üç vuruş daha duydum. Bu kez tekrar etmedi. Dış kapıyı açıp sokağa çıktım. İstanbul aynı İstanbul’du. Bir süre sonra telefonum yeniden normal çalışmaya başladı.\n\nYaşadığım şeyi kanıtlamak için fotoğraflar ve ses kaydı var, ama bunlar ne olduğunu açıklamıyor. En azından bu gece evden sağ çıktım.",
+      "kind": "ending",
+      "image": "foto_daire_gece.jpg",
+      "image_caption": "Sabaha karşı, dairedeki ışık yeniden normal hâline döner.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [],
+      "control": null,
+      "ending": "KURTULUŞ"
+    },
+    {
+      "id": "S042",
+      "chapter": 6,
+      "title": "FİNAL 2 - TEMAS",
+      "speaker": "Deniz",
+      "time": "03:53",
+      "text": "Telefonun ışığını iki kısa, bir uzun, iki kısa biçiminde yaktım. Birkaç saniye sonra gökyüzündeki ışık aynı ritmi geri verdi. Sonra görüntüde yeni bir örüntü belirdi: üç nokta, aralarında eşit mesafeler ve bizim binanın yansıması.\n\nNesne saldırmadı. Işık çizgisi çatının üzerinden çekildi, ama telefonun ekranında yeni bir görüntü kaldı: İstanbul’un üstünde, bizim gördüğümüzden çok daha geniş bir ağ. Bir şey bizi yalnızca ölçmüyordu; yanıtımızı da kaydediyordu.\n\nDeniz hayatta kaldı ve kanıtları dışarıya gönderdi. Artık bunun tek bir olay olmadığını biliyoruz. İlk temas kurulmuş olabilir, fakat bunun neye yol açacağını kimse bilmiyor.",
+      "kind": "ending",
+      "image": "foto_gokyuzu.jpg",
+      "image_caption": "Işık, doğru örüntüye cevap veriyor; şehirde başka noktalar da beliriyor.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [],
+      "control": null,
+      "ending": "TEMAS"
+    },
+    {
+      "id": "S043",
+      "chapter": 6,
+      "title": "FİNAL 3 - KAYIP",
+      "speaker": "Deniz",
+      "time": "03:54",
+      "text": "Işığa doğru bir adım attım. Telefon ekranındaki görüntü sabit kaldı ama salonun, koridorun ve çatının yansımaları üst üste bindi. Bir an için kendimi pencereden, kapıdan ve telefon ekranından aynı anda gördüm.\n\nSana seslenmeye çalıştım. Sesim geri geldi; ama ağzım hareket etmeden önce. Telefon yere düştü ve görüntü karardı.\n\nSabah olduğunda binanın çatısında yalnızca telefon bulundu. Fotoğraflar duruyordu. Deniz’in nerede olduğu hiçbir zaman öğrenilemedi. Son karede, İstanbul’un ışıkları arasında aynı halka yeniden belirdi.",
+      "kind": "ending",
+      "image": "foto_izli_kapi.jpg",
+      "image_caption": "Son görüntü: kapının ardında bir gölge ve yerde kalan telefon.",
+      "enter_effects": [],
+      "enter_flags": [],
+      "choices": [],
+      "control": null,
+      "ending": "KAYIP"
+    }
+  ]
+}
